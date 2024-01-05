@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <!-- <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        #labelTitle{
+            font-size: 20px;
+            font-weight: 700;
+        }
+    </style>
+    <script>
+        function changeClick(){
+            var check=document.getElementById("check");
+            var form=document.querySelector("form");
+            if(check.checked){
+                form.className=("bg-white text-dark p-4 rounded w-100  border border-3 border-dark");
+                document.querySelector("button").className=("btn btn-warning rounded rounded-end-pill rounded-top-pill");
+                document.querySelector("#submitbtn").className=("btn btn-info rounded rounded-pill w-25");
+                document.getElementById("theme").innerHTML="Dark Mode";
+            }
+            else{
+                form.className=("bg-dark text-white p-4 w-100 rounded border border-3 border-dark");
+                document.querySelector("button").className=("btn btn-success rounded rounded-end-pill rounded-top-pill");
+                document.querySelector("#submitbtn").className=("btn btn-warning rounded rounded-pill w-25");
+                document.getElementById("theme").innerHTML="White Mode";
+            }
+        }
+        function VerifyPAssword(){
+            var password=document.getElementById("password").value;
+            var msg=document.getElementById("message");
+            if(password.length==0){
+                msg.innerHTML="Password is Required";
+                msg.style.color="red";
+            }
+            else{
+                msg.innerHTML="";
+            }
+        }
+        
+        function verifyPassword(){
+            var regExp=/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)[\w\W]{4,15}/;
+            var password=document.getElementById("password").value;
+            var msg=document.getElementById("message");
+            if(password.length==0){
+                msg.innerHTML="Password is Required";
+                msg.style.color="red";
+            }else{
+                if(password.match(regExp)){
+                msg.innerHTML="Strong Password";
+                msg.style.color="green";
+            }else if( password.length<4)
+            {
+                msg.innerHTML="Poor Password";
+                msg.style.color="red";
+            }
+            else{
+                msg.innerHTML="Weak Password";
+                msg.style.color="gold";
+            }
+            }
+        }
+        function VerifyPAssword2(){
+            var password=document.getElementById("password").value;
+            var msg=document.getElementById("message2");
+            if(password.length==0){
+                msg.innerHTML="Password is Required";
+                msg.style.color="red";
+            }
+            else{
+                msg.innerHTML="";
+
+            }
+        }
+        function conformPassword(){
+            var passwordFirst=document.getElementById("password").value;
+            var passwordConform=document.getElementById("password2").value;
+            var msg=document.getElementById("message2");
+            if(passwordConform.match(passwordFirst)){
+                msg.innerHTML="Password Matched";
+                msg.style.color="Green";
+            }
+            else{
+                msg.innerHTML="Password Not Matched";
+                msg.style.color="red";
+            }
+        }
+        function emailVerify(){
+            var regExp=/[\w]{3,30}@[A-Za-z]{2,9}\.[a-zA-Z]{2,5}/;
+            var email=document.getElementById("email").value;
+            var emailError=document.getElementById("emailError");
+            if(email.match(regExp)){
+                emailError.innerHTML="";
+            }
+            else{
+                emailError.innerHTML="Invalid Email.".fontcolor('red');
+            }
+        }
+        function verifyUsername(){
+            var username=document.getElementById("username").value;
+            var error=document.getElementById("usernameError");
+            var regExp=/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[A-Z a-z 0-9]{6,15}/;
+            if(username.match(regExp)){
+                error.innerHTML="";
+            }
+            else{
+                error.innerHTML="Invalid Username Format.".fontcolor('red');
+                error.style.marginLeft="20px";
+            }
+        }
+        function myFunction() {
+            document.write("Registration Successful...");
+        }
+    </script>
+    
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center" style="height:1500px">
+   <form class="rounded w-100 bg-dark text-white p-4"  onsubmit="myFunction()">
+        <h1 class="text-center mb-4"><span class="bi bi-person-fill"></span>Registration Form</h1>
+        <div class="form-switch float-end d-flex">
+            <input type="checkbox" name="checkbox" id="check" onchange="changeClick()" class="form-check-input">
+            <label id="theme" for="checkbox" class="form-check-label ms-2">White Mode</label>
+        </div>
+    
+    <div class=" mb-4"><span id="labelTitle">Name</span>
+        <div class="row">
+            <div class="col">
+                <label for="fname" class="form-label">FirstName</label>
+                <div class="input-group">
+                    <span class="bi bi-person-fill input-group-text"></span>
+                    <input type="text" class="form-control" pattern="[A-Z a-z]{2,}" placeholder="FirstName" required name="fname">
+                </div>
+            </div>
+            <div class="col">
+                <label for="lname" class="form-label" >LastName</label>
+                <div class="input-group">
+                    <span class="bi bi-person-fill input-group-text"></span>
+                    <input type="text" class="form-control" pattern="[A-Z a-z]{2,}" placeholder="LastName" required name="lname">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mb-4"><span id="labelTitle">Father Name</span>
+        <div class="row">
+            <div class="col">
+                <label for="fname" class="form-label">FirstName</label>
+                <div class="input-group">
+                    <span class="bi bi-person-fill input-group-text"></span>
+                    <input type="text" class="form-control" pattern="[A-Z a-z]{2,}" placeholder="FirstName" required name="fname">
+                </div>
+            </div>
+            <div class="col">
+                <label for="lname" class="form-label">LastName</label>
+                <div class="input-group">
+                    <span class="bi bi-person-fill input-group-text"></span>
+                    <input type="text" class="form-control" pattern="[A-Z a-z]{2,}" placeholder="LastName" required name="lname">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div  class="mb-4"><label for="dob" class="form-label"><span id="labelTitle">Date Of Birth</span></label>
+        <div>
+            <div class="input-group">
+                <span class="bi bi-cake input-group-text"></span>
+                <input type="date" min="1999-01-01" max="2005-01-01" required class="form-control" name="dob">
+            </div>
+        </div>
+    </div>
+    <div  class="mb-4">
+        <span id="labelTitle">Gender</span>
+            <div class="d-flex justify-content-around">
+                <div>
+                    <input type="radio" name="gender" class="form-check-input"><label for="gender" class="form-check-label ms-1"> Male</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" class="form-check-input"><label for="gender" class="form-check-label ms-1"> Female</label>
+                </div>
+                <div>
+                    <input type="radio" name="gender" class="form-check-input"><label for="gender" class="form-check-label ms-1"> Others</label>
+                </div>
+            </div>
+    </div>
+    <div class="mb-4">
+        <label for="address" class="form-label"><span id="labelTitle">Address</span></label>
+        <textarea name="address" required placeholder="Address" cols="30" rows="3" class="form-control"></textarea>
+    </div>
+    <div class=" row" style="height: 110px;">
+        <div class="col">
+            <label for="mobile" class="form-label"><span id="labelTitle">Mobile No.</span></label>
+            <div class="input-group">
+                <span class="bi bi-telephone-fill input-group-text"></span>
+                <input type="text" required autocomplete="off" placeholder="Mobile Number    eg: +91 10 digit number" pattern="\+91\s[0-9]{10}" name="mobile" class="form-control">
+            </div>
+
+        </div>
+        <div class="col">
+            <label for="email" class="form-label"><span id="labelTitle">Email</span></label>
+            <div class="input-group">
+                <span class="bi bi-envelope-fill input-group-text"></span>
+                <input type="email" required  id="email" onkeyup="emailVerify()" placeholder="abc@gmail.com" name="email" class="form-control">
+                
+            </div>
+            <span id="emailError"></span>
+        </div>
+    </div>
+    <div class="mb-4 row">
+        <div class="col">
+            <label for="country" class="form-label"><span id="labelTitle">Country</span></label>
+        <select class="form-select">
+            <option>Select City</option>
+            <option value="India">India</option>
+            <option value="Japan">Japan</option>
+            <option value="China">China</option>
+            <option value="Pakistan">Pakistan</option>
+        </select>
+        </div>
+        <div class="col">
+            <label for="country" class="form-label"><span id="labelTitle">Religion</span></label>
+            <select class="form-select">
+                <option>Select Religion</option>
+                <option>Hinduism</option>
+                <option>Buddhism</option>
+                <option>Islam</option>
+                <option>Christians</option>
+            </select>
+        </div>
+    </div>
+    <div class="mb-4 row">
+        <label for="username" class="form-label"><span id="labelTitle">Username</span></label>
+        <div class="col">
+            <input type="text" id="username" onkeyup="verifyUsername()" name="username" required autocomplete="off" class="form-control">
+        </div>
+        <div class="col">
+            <button class="btn btn-success rounded rounded-end-pill rounded-top-pill"> Check Available</button><span id="usernameError"></span>
+        </div>
+        
+        
+
+    </div>
+
+    <div style="height: 110px;">
+        <label for="password" class="form-label"><span id="labelTitle">Password</span></label>
+            <div class="input-group">
+                <span class="bi bi-key-fill input-group-text"></span>    
+                <input type="password" onkeyup="verifyPassword()" onblur="VerifyPAssword()" id="password" required  placeholder="New Password" autocomplete="off"  name="password" class="form-control">
+                
+            </div>
+            <span id="message"></span>
+            
+    </div>
+    <div style="height: 110px;">
+            <label for="cpassword" class="form-label"><span id="labelTitle">Confirm Password</span></label>
+            <div class="input-group">
+                <span class="bi bi-key-fill input-group-text"></span>    
+                <input type="password" onblur="VerifyPAssword2()" onkeyup="conformPassword()" placeholder="Confirm Password" id="password2" required name="cpassword" class="form-control">
+            </div>
+            <span id="message2" ></span>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary rounded rounded-pill w-25" onclick="submitClick()" id="submitbtn" style="margin-top: 50px;">Register</button>
+        <button type="reset" class="btn btn-danger rounded rounded-pill w-25"  id="resetbtn" style="margin-top: 50px;">Reset</button>
+    </div>
+    
+   </form>
+</body>
+</html>
